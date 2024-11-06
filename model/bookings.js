@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+//schema/model pour bookings
 const bookingSchema = mongoose.Schema({
     departure: String,
     arrival: String,

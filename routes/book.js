@@ -4,6 +4,7 @@ const Trip = require("../model/trips");
 const Cart = require("../model/carts");
 const moment = require("moment");
 
+//route post pour "essayer" de déplacer ce qu'il y a du cart au book et créer une nouvelle collection
 router.post("/trips", async (req, res) => {
   const { departure, arrival, date } = req.body;
   const dateBook = moment();

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+//schema/model pour trips sur la page d'accueil
 const tripSchema = mongoose.Schema({
     departure: String,
     arrival: String,
