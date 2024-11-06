@@ -5,22 +5,28 @@ const Cart = require("../model/carts");
 const moment = require("moment");
 
 router.post("/carts", (req, res) => {
-  const { info } = req.body;
+  const {
+    /*id à recuperer du front*/
+  } = req.body;
 
   const newCart = new Cart({
     paiement: true,
-    info: info,
+    /*id à recuperer du front: id à recuperer du front,*/
   });
 
   newCart.save().then(() => {
-    res.json({ info: info, paiement: true });
+    res.json({
+      /*id à recuperer du front: id à recuperer du front,*/ paiement: true,
+    });
   });
 });
 
 router.get("/carts", (req, res) => {
-  Cart.find().then((carts) => {
-    res.json(carts);
-  });
+  Cart.find()
+    .populate("info")
+    .then((carts) => {
+      res.json(carts);
+    });
 });
 
 module.exports = router;
