@@ -4,20 +4,24 @@ const Trip = require("../model/trips");
 const Cart = require("../model/carts");
 const moment = require("moment");
 
-router.post("/carts", async (req, res) => {
+router.post("/carts", (req, res) => {
   const { info } = req.body;
-  
+
   const newCart = new Cart({
     paiement: true,
     info: info,
   });
 
-  newCart.save().then(() => {})
-  res.json({});
+  newCart.save().then(() => { 
+    res.json({ info: info, paiement: true });
+  })
 });
 
-router.get(){
-  Cart
-}
+router.get('/carts', (req, res) => {
+  Cart.find()
+    .then(carts => {
+      res.json(carts);
+    })
+});
 
 module.exports = router;
