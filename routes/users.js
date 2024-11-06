@@ -4,7 +4,7 @@ const Trip = require("../model/trips");
 const Cart = require("../model/carts");
 const moment = require("moment");
 
-router.post("/", async (req, res) => {
+router.post('/', async (req, res) => {
   const { id } = req.body;
 
   const newCart = new Cart({
