@@ -4,25 +4,29 @@ const Trip = require("../model/trips");
 const Cart = require("../model/carts");
 const moment = require("moment");
 
-router.post("/carts", (req, res) => {
-  const { /*id à recuperer du front*/ } = req.body;
+router.post("/", async (req, res) => {
+  const { id } = req.body;
 
   const newCart = new Cart({
     paiement: true,
-    /*id à recuperer du front: id à recuperer du front,*/
+    info: id,
   });
 
   newCart.save().then(() => { 
-    res.json({/*id à recuperer du front: id à recuperer du front,*/ paiement: true });
+    res.json({ paiement: true });
   })
 });
 
-router.get('/carts', (req, res) => {
-  Cart.find()
-    .populate('info')
-    .then(carts => {
-      res.json(carts);
-    })
+router.get('/', async (req, res) => {
+  const carts = await Cart.find()
+    .populate('info');
+    res.json(carts);
+});
+
+router.delete('/:id', async (req, res) => {
+  const {id} = req.params;
+  const deleteCart = await Cart.findByIdAndDelete(id);
+    res.json({ result: true, cart: deleteCart });
 });
 
 module.exports = router;
