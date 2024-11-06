@@ -4,24 +4,23 @@ const Trip = require("../model/trips");
 const Cart = require("../model/carts");
 const moment = require("moment");
 
-router.post("/", async (req, res) => {
-  const { id } = req.body;
-  console.log(typeof id);
-  const findTrip = await Trip.findById(id);
-  console.log(findTrip);
-  res.json({ findTrip });
-  // const newCart = new Cart({
-  //   paiement: true,
-  //   info: info,
-  // });
+router.post("/carts", (req, res) => {
+  const { info } = req.body;
 
-  // newCart.save().then(() => {
-  //   res.json({ newCart });
-  // });
+  const newCart = new Cart({
+    paiement: true,
+    info: info,
+  });
+
+  newCart.save().then(() => {
+    res.json({ info: info, paiement: true });
+  });
 });
 
-// router.get(){
-//   Cart
-// }
+router.get("/carts", (req, res) => {
+  Cart.find().then((carts) => {
+    res.json(carts);
+  });
+});
 
 module.exports = router;
