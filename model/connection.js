@@ -1,7 +1,9 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const connectionString ='mongodb+srv://admin:4PkfOsjbZBrXZd69@user.d0eok.mongodb.net/Tickethack';
+const connectionString =
+  "mongodb+srv://admin:8KrtAsEVmjtKbmaW@admin.3ss6o.mongodb.net/tickethack";
 
-mongoose.connect(connectionString,{ connectTimeoutMS: 2000 })
-    .then(() => console.log("Database Connected"))
-    .catch(error => console.log(error));
+mongoose
+  .connect(connectionString, { connectTimeoutMS: 2000 })
+  .then(() => console.log("Database Connected"))
+  .catch((error) => console.log(error));
