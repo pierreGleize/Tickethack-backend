@@ -13,7 +13,11 @@ router.post("/trips", async (req, res) => {
     arrival: { $regex: new RegExp(arrival, "i") },
     date: { $gte: dateStart, $lte: dateEnd },
   });
-  res.json({ tripsFilter });
+  if (tripsFilter) {
+    res.json({ tripsFilter });
+  } else {
+    res.json({ result: false });
+  }
 });
 
 module.exports = router;
