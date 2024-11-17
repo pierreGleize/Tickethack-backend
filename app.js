@@ -1,15 +1,18 @@
+require("dotenv").config();
+require("./model/connection");
+
 var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
-require("./model/connection");
+
 var indexRouter = require("./routes/index");
 const cartRouter = require("./routes/users");
 
 var app = express();
 const cors = require("cors");
-const { mongo, default: mongoose } = require("mongoose");
 app.use(cors());
+
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
